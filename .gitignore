@@ -1,0 +1,4 @@
+# when updating this file, also consider updating .dockerignore
+/bin/
+/obj/
+.DS_Store
