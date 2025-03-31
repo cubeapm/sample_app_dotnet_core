@@ -5,6 +5,14 @@ services:
     build:
       context: .
     container_name: cube_dotnet_core_core
+    environment:
+      - OTEL_SERVICE_NAME=cube_sample_dotnet_core_otel
+      - OTEL_EXPORTER_OTLP_COMPRESSION=gzip
+
+      # print traces on console
+      - OTEL_TRACES_EXPORTER=console
+      # send traces to CubeAPM
+      # - OTEL_EXPORTER_OTLP_TRACES_ENDPOINT=http://host.docker.internal:4318/v1/traces
     ports:
       - "8080:8080"
     depends_on:
