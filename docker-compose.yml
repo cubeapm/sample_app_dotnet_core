@@ -5,6 +5,10 @@ services:
     build:
       context: .
     container_name: cube_dotnet_core_core
+    environment:
+      - DD_SERVICE=cube_sample_dotnet_core_datadog
+      # send traces to CubeAPM
+      - DD_TRACE_AGENT_URL=http://host.docker.internal:3130
     ports:
       - "8080:8080"
     depends_on:

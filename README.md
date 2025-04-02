@@ -1,3 +1,11 @@
+# Datadog Instrumentation
+
+This branch contains code for Datadog instrumentation.
+
+By default, hitting an API endpoint will generate a trace, which is sent to CubeAPM. This behavior is controlled via environment variables in [docker-compose.yml](docker-compose.yml).
+
+Refer the project README below for more details.
+
 # .NET Core Instrumentation
 
 This is a sample app to demonstrate how to instrument .NET Core app with **Datadog**, **Elastic**, **New Relic** and **OpenTelemetry**. It contains source code for the .NET Core app which interacts with various services like Redis, MySQL, Kafka, etc. to demonstrate tracing for these services. This repository has a docker compose file to set up all these services conveniently.
