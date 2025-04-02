@@ -7,9 +7,12 @@ services:
     container_name: cube_dotnet_core_core
     environment:
       # New Relic agent will send data on https://<domain_of_cubeapm_server>:443
-      - NEW_RELIC_HOST=8eb4-43-230-104-96.ngrok-free.app
+      - NEW_RELIC_HOST=<domain_of_cubeapm_server>
       - NEW_RELIC_APP_NAME=cube_sample_dotnet_core_newrelic
       - NEW_RELIC_LICENSE_KEY=ABC4567890ABC4567890ABC4567890ABC4567890 
+      
+      # Print New Relic agent logs on screen  
+      # - NEW_RELIC_LOG_CONSOLE=true 
     ports:
       - "8080:8080"
     depends_on:

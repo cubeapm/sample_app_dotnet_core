@@ -8,6 +8,17 @@ For testing, **ngrok** can be used in place of load balancer. Run `ngrok http 31
 
 Refer the project README below for more details.
 
+## Troubleshooting
+
+If the app does not show up in CubeAPM after integration is done, add the below environment variables to check New Relic agent logs.
+
+```shell
+# Print New Relic agent logs on screen
+NEW_RELIC_LOG_CONSOLE=true 
+```
+
+---
+
 # .NET Core Instrumentation
 
 This is a sample app to demonstrate how to instrument .NET Core app with **Datadog**, **Elastic**, **New Relic** and **OpenTelemetry**. It contains source code for the .NET Core app which interacts with various services like Redis, MySQL, Kafka, etc. to demonstrate tracing for these services. This repository has a docker compose file to set up all these services conveniently.
