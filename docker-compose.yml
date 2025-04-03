@@ -5,6 +5,9 @@ services:
     build:
       context: .
     container_name: cube_dotnet_core_core
+    environment:
+      - ELASTIC_APM_SERVICE_NAME=cube_sample_dotnet_core_elastic
+      - ELASTIC_APM_SERVER_URL=http://host.docker.internal:3130
     ports:
       - "8080:8080"
     depends_on:
