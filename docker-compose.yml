@@ -8,6 +8,9 @@ services:
     environment:
       - OTEL_SERVICE_NAME=cube_sample_dotnet_core_otel
       - OTEL_EXPORTER_OTLP_COMPRESSION=gzip
+      - OTEL_METRICS_EXPORTER=none
+      - OTEL_LOGS_EXPORTER=none
+      - OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
 
       # print traces on console
       - OTEL_TRACES_EXPORTER=console

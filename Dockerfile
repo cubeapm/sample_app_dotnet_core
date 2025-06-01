@@ -23,22 +23,15 @@ FROM --platform=linux/amd64 mcr.microsoft.com/dotnet/aspnet:8.0
 
 # install OpenTelemetry .NET Automatic Instrumentation
 ARG OTEL_VERSION=1.9.0
+ENV OTEL_DOTNET_AUTO_HOME=/otel-dotnet-auto
 ADD https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/download/v${OTEL_VERSION}/otel-dotnet-auto-install.sh otel-dotnet-auto-install.sh
 RUN apt-get update && apt-get install -y curl unzip && \
-    OTEL_DOTNET_AUTO_HOME="/otel-dotnet-auto" sh otel-dotnet-auto-install.sh
-
-# enable OpenTelemetry .NET Automatic Instrumentation
-ENV CORECLR_ENABLE_PROFILING=1 \
-    CORECLR_PROFILER={918728DD-259F-4A6A-AC2B-B85E1B658318} \
-    CORECLR_PROFILER_PATH=/otel-dotnet-auto/linux-x64/OpenTelemetry.AutoInstrumentation.Native.so \
-    DOTNET_ADDITIONAL_DEPS=/otel-dotnet-auto/AdditionalDeps \
-    DOTNET_SHARED_STORE=/otel-dotnet-auto/store \
-    DOTNET_STARTUP_HOOKS=/otel-dotnet-auto/net/OpenTelemetry.AutoInstrumentation.StartupHook.dll \
-    OTEL_DOTNET_AUTO_HOME=/otel-dotnet-auto
+    sh otel-dotnet-auto-install.sh
+RUN chmod +x /otel-dotnet-auto/instrument.sh
 
 WORKDIR /TodoApi
 COPY --from=build-env /TodoApi/out /TodoApi
 
 EXPOSE 8080
 
-CMD ["dotnet", "TodoApi.dll"]
+CMD ["/otel-dotnet-auto/instrument.sh", "dotnet", "TodoApi.dll"]
