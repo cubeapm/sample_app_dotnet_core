@@ -9,10 +9,12 @@ services:
       # New Relic agent will send data on https://<domain_of_cubeapm_server>:443
       - NEW_RELIC_HOST=<domain_of_cubeapm_server>
       - NEW_RELIC_APP_NAME=cube_sample_dotnet_core_newrelic
-      - NEW_RELIC_LICENSE_KEY=ABC4567890ABC4567890ABC4567890ABC4567890 
-      
-      # Print New Relic agent logs on screen  
-      # - NEW_RELIC_LOG_CONSOLE=true 
+      - NEW_RELIC_LICENSE_KEY=ABC4567890ABC4567890ABC4567890ABC4567890
+
+      # Print New Relic agent logs on screen
+      #- NEW_RELIC_LOG_CONSOLE=true
+      # Set New Relic agent log level to debug if needed to see detailed logs
+      #- NEW_RELIC_LOG_LEVEL=debug
     ports:
       - "8080:8080"
     depends_on:
