@@ -9,6 +9,15 @@ services:
       - DD_SERVICE=cube_sample_dotnet_core_datadog
       # send traces to CubeAPM
       - DD_TRACE_AGENT_URL=http://host.docker.internal:3130
+
+      # Print Datadog tracer startup logs
+      # - DD_TRACE_STARTUP_LOGS=true
+      # Enable Datadog tracer debug logging if needed to see detailed logs
+      # - DD_TRACE_DEBUG=true
+      #
+      # On Linux, logs files are saved in /var/log/datadog/dotnet/ directory.
+      # On Windows, logs files are saved in %ProgramData%\Datadog .NET Tracer\logs\ directory.
+      
     ports:
       - "8080:8080"
     depends_on:
