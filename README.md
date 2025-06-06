@@ -6,6 +6,19 @@ By default, hitting an API endpoint will generate a trace, which is sent to Cube
 
 Refer the project README below for more details.
 
+## Troubleshooting
+
+If the app does not show up in CubeAPM after integration is done, add the below environment variables to check Elastic agent logs.
+
+```shell
+# Print Elastic agent logs on screen
+ELASTIC_OTEL_LOG_TARGETS=stdout
+# Set Elastic agent log level to debug if needed to see detailed logs
+#OTEL_LOG_LEVEL=debug
+```
+
+---
+
 # .NET Core Instrumentation
 
 This is a sample app to demonstrate how to instrument .NET Core app with **Datadog**, **Elastic**, **New Relic** and **OpenTelemetry**. It contains source code for the .NET Core app which interacts with various services like Redis, MySQL, Kafka, etc. to demonstrate tracing for these services. This repository has a docker compose file to set up all these services conveniently.

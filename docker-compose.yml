@@ -8,6 +8,11 @@ services:
     environment:
       - ELASTIC_APM_SERVICE_NAME=cube_sample_dotnet_core_elastic
       - ELASTIC_APM_SERVER_URL=http://host.docker.internal:3130
+
+      # Print Elastic agent logs on screen 
+      # -  ELASTIC_OTEL_LOG_TARGETS=stdout
+      # Set Elastic agent log level to debug if needed to see detailed logs
+      # - OTEL_LOG_LEVEL=debug
     ports:
       - "8080:8080"
     depends_on:
