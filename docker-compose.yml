@@ -8,14 +8,20 @@ services:
     environment:
       - OTEL_SERVICE_NAME=cube_sample_dotnet_core_otel
       - OTEL_EXPORTER_OTLP_COMPRESSION=gzip
-      - OTEL_METRICS_EXPORTER=none
       - OTEL_LOGS_EXPORTER=none
       - OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
 
       # print traces on console
       - OTEL_TRACES_EXPORTER=console
       # send traces to CubeAPM
+      # - OTEL_TRACES_EXPORTER=otlp
       # - OTEL_EXPORTER_OTLP_TRACES_ENDPOINT=http://host.docker.internal:4318/v1/traces
+
+      # print metrics on console
+      - OTEL_METRICS_EXPORTER=console
+      # send metrics to CubeAPM
+      # - OTEL_METRICS_EXPORTER=otlp
+      # - OTEL_EXPORTER_OTLP_METRICS_ENDPOINT=http://host.docker.internal:3130/api/metrics/v1/save/otlp
     ports:
       - "8080:8080"
     depends_on:
