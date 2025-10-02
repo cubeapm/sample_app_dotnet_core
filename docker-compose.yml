@@ -9,6 +9,11 @@ services:
       - ELASTIC_APM_SERVICE_NAME=cube_sample_dotnet_core_elastic
       - ELASTIC_APM_SERVER_URL=http://host.docker.internal:3130
 
+      # optional settings
+      # - ELASTIC_APM_ENVIRONMENT=myenv
+      # - ELASTIC_APM_SERVICE_VERSION=1.2.3
+      # - ELASTIC_APM_GLOBAL_LABELS=mykey1=myvalue1,mykey2=myvalue2
+
       # Print Elastic agent logs on screen 
       # -  ELASTIC_OTEL_LOG_TARGETS=stdout
       # Set Elastic agent log level to debug if needed to see detailed logs
