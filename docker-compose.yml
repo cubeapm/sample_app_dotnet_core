@@ -11,6 +11,9 @@ services:
       - OTEL_LOGS_EXPORTER=none
       - OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
 
+      # optional settings
+      - OTEL_RESOURCE_ATTRIBUTES=cube.environment=UNSET,service.version=1.2.3,mykey1=myvalue1,mykey2=myvalue2
+
       # print traces on console
       - OTEL_TRACES_EXPORTER=console
       # send traces to CubeAPM
