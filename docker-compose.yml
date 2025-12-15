@@ -48,6 +48,13 @@ services:
       - DD_DD_URL=http://host.docker.internal:3130
       # send traces to CubeAPM
       - DD_APM_DD_URL=http://host.docker.internal:3130
+      # send logs to CubeAPM
+      - DD_LOGS_CONFIG_LOGS_DD_URL=http://host.docker.internal:3130
+      - DD_LOGS_ENABLED=true
+      - DD_LOGS_INJECTION=true
+      - DD_LOGS_CONFIG_USE_HTTP=true
+      - DD_LOGS_CONFIG_LOGS_NO_SSL=true
+      - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true
 
       # Accept traces and metrics from applications running outside the agent host
       - DD_APM_NON_LOCAL_TRAFFIC=true
