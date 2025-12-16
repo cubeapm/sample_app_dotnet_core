@@ -11,6 +11,13 @@ services:
       - NEW_RELIC_APP_NAME=cube_sample_dotnet_core_newrelic
       - NEW_RELIC_LICENSE_KEY=ABC4567890ABC4567890ABC4567890ABC4567890
 
+      # Send logs to CubeAPM
+      # https://docs.newrelic.com/docs/logs/logs-context/net-configure-logs-context-all/
+      - NEW_RELIC_APPLICATION_LOGGING_ENABLED=true
+      - NEW_RELIC_APPLICATION_LOGGING_FORWARDING_ENABLED=true
+      - NEW_RELIC_APPLICATION_LOGGING_FORWARDING_CONTEXT_DATA_ENABLED=true
+      - NEW_RELIC_APPLICATION_LOGGING_LOCAL_DECORATING_ENABLED=true
+
       # Print New Relic agent logs on screen
       #- NEW_RELIC_LOG_CONSOLE=true
       # Set New Relic agent log level to debug if needed to see detailed logs

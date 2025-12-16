@@ -4,7 +4,12 @@ using TodoApi.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
+// builder.Logging.AddConsole();
+// builder.Logging.AddJsonConsole();
+builder.Logging.AddConsole(options =>
+{
+    options.IncludeScopes = true;
+});
 builder.Logging.SetMinimumLevel(LogLevel.Information);
 
 // Add services to the container.
