@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using TodoApi.Models;
 
+OtelMetrics.Init();
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

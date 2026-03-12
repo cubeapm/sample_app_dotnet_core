@@ -11,6 +11,7 @@ using Microsoft.Extensions.Caching.Distributed;
 using TodoApi.Models;
 using RestSharp;
 using Confluent.Kafka;
+using System.Diagnostics.Metrics;
 
 namespace TodoApi.Controllers
 {
@@ -22,6 +23,8 @@ namespace TodoApi.Controllers
         private readonly IDistributedCache _cache;
         private readonly IProducer<string, string> _producer;
         private readonly IConsumer<string, string> _consumer;
+
+        private readonly Counter<long> _homeCallsCounter = OtelMetrics.Meter.CreateCounter<long>("home_calls");
 
         public RootController(TodoContext context, IDistributedCache cache)
         {
@@ -49,6 +52,11 @@ namespace TodoApi.Controllers
         [HttpGet]
         public ActionResult<string> Get()
         {
+            _homeCallsCounter.Add(1);
+            // _homeCallsCounter.Add(
+            //     1,
+            //     new KeyValuePair<string, object?>("my_key", "my_value")
+            // );
             return "Hello";
         }
 
