@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- 
+      NEW RELIC AGENT DEPENDENCY
+      This tells the .NET compiler to download the New Relic profiler binaries 
+      from NuGet.org. We do not need to write code to initialize it; 
+      the runtime uses these binaries automatically via the Profiling API.
+    -->
+    <PackageReference Include="NewRelic.Agent" Version="10.51.1" />
     <PackageReference Include="Confluent.Kafka" Version="2.5.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -22,7 +22,7 @@ services:
     volumes:
       - cube_dotnet_core_mysql:/var/lib/mysql
     ports:
-      - "3306:3306"
+      - "33066:33066"
 
   redis:
     image: redis:alpine3.18
